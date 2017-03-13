@@ -138,50 +138,61 @@ class PlayerListViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func fetchPlayers() {
         
-        let url = NSURL(string: "http://hackerearth.0x10.info/api/gyanmatrix?type=json&query=list_player")
+//        let url = NSURL(string: "http://hackerearth.0x10.info/api/gyanmatrix?type=json&query=list_player")
+//        
+//        let task = URLSession.shared.dataTask(with: url! as URL) {(data, response, error) in
+//            
+//            //            print("Task completed")
+//            if(error != nil) {
+//                print(error?.localizedDescription ?? "Error Occured Fail")
+//            }
+//            do {
         
-        let task = URLSession.shared.dataTask(with: url! as URL) {(data, response, error) in
-            
-            //            print("Task completed")
-            if(error != nil) {
-                print(error?.localizedDescription ?? "Error Occured Fail")
-            }
-            do {
-                let jsonResult = try JSONSerialization.jsonObject(with: data!, options:
-                    JSONSerialization.ReadingOptions.mutableContainers) as! [String : Any]
-                //                print(jsonResult)
-                let jsonPlayerList : Array = jsonResult["records"] as! [[String:Any]];
-                
-                for jsonPlayer in jsonPlayerList {
-                    let id : Double = (jsonPlayer["id"] as! NSString).doubleValue
-                    let name : String = jsonPlayer["name"] as! String
-                    let image : String = jsonPlayer["image"] as! String
-                    let totalScore : Double = (jsonPlayer["total_score"] as! NSString).doubleValue
-                    let descriptions : String = jsonPlayer["description"] as! String
-                    let matchesPlayed : Double = (jsonPlayer["matches_played"] as! NSString).doubleValue
-                    let country : String = jsonPlayer["country"] as! String
-//                    print(name,id,image,totalScore,descriptions,matchesPlayed,country)
-                    
-                    let tempPlayer = Player.init(id: id, name: name, image: image, totalScore: totalScore, descriptions: descriptions, matchesPlayed: matchesPlayed, country: country);
-                    self.playerList.append(tempPlayer)
-                    
-                    DBUtil.fetch()
-                    for player in DBUtil.favoritePlayer {
-                        if tempPlayer.name == player.value(forKeyPath: "name") as! String {
-                            tempPlayer.favorite = true
-                        }
-                    }
-                    
+                if let path = Bundle.main.path(forResource: "list", ofType: "json") {
+                    do {
+                        let jsonData = try NSData(contentsOfFile: path, options: NSData.ReadingOptions.mappedIfSafe)
+                        do {
+                            let jsonResult: NSDictionary = try JSONSerialization.jsonObject(with: jsonData as Data, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
+                            //                print(jsonResult)
+                            let jsonPlayerList : Array = jsonResult["records"] as! [[String:Any]];
+                            
+                            for jsonPlayer in jsonPlayerList {
+                                let id : Double = (jsonPlayer["id"] as! NSString).doubleValue
+                                let name : String = jsonPlayer["name"] as! String
+                                let image : String = jsonPlayer["image"] as! String
+                                let totalScore : Double = (jsonPlayer["total_score"] as! NSString).doubleValue
+                                let descriptions : String = jsonPlayer["description"] as! String
+                                let matchesPlayed : Double = (jsonPlayer["matches_played"] as! NSString).doubleValue
+                                let country : String = jsonPlayer["country"] as! String
+                                //                    print(name,id,image,totalScore,descriptions,matchesPlayed,country)
+                                
+                                let tempPlayer = Player.init(id: id, name: name, image: image, totalScore: totalScore, descriptions: descriptions, matchesPlayed: matchesPlayed, country: country);
+                                self.playerList.append(tempPlayer)
+                                
+                                DBUtil.fetch()
+                                for player in DBUtil.favoritePlayer {
+                                    if tempPlayer.name == player.value(forKeyPath: "name") as! String {
+                                        tempPlayer.favorite = true
+                                    }
+                                }
+                                
+                            }
+                            
+                            self.playerListForView = self.playerList
+                            self.reLoadTable()
+                        } catch {}
+                    } catch {}
                 }
                 
-                self.playerListForView = self.playerList
-                self.reLoadTable()
-            } catch {
-                print("JSON Processing Failed")
-            }
-        }
+//                let jsonResult = try JSONSerialization.jsonObject(with: data!, options:
+//                    JSONSerialization.ReadingOptions.mutableContainers) as! [String : Any]
         
-        task.resume()
+//            } catch {
+//                print("JSON Processing Failed")
+//            }
+//        }
+//        
+//        task.resume()
     }
     
     @IBAction func sortByMatchPlayed(_ sender: Any) {

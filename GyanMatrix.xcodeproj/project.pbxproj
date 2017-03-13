@@ -13,6 +13,7 @@
 		8551B56A1E7595E100D70631 /* PlayerListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8551B5681E7595E100D70631 /* PlayerListViewCell.swift */; };
 		8551B56F1E759F3100D70631 /* PlayerListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8551B56E1E759F3100D70631 /* PlayerListViewCell.xib */; };
 		8551B5721E75BB1D00D70631 /* DBUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8551B5711E75BB1D00D70631 /* DBUtil.swift */; };
+		85C4E6621E773125007F1DDD /* list.json in Resources */ = {isa = PBXBuildFile; fileRef = 85C4E6611E773125007F1DDD /* list.json */; };
 		85C8C4171E753BF2005FFE99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C8C4161E753BF2005FFE99 /* AppDelegate.swift */; };
 		85C8C41C1E753BF2005FFE99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85C8C41A1E753BF2005FFE99 /* Main.storyboard */; settings = {ASSET_TAGS = (FavoriteListViewController, ); }; };
 		85C8C41F1E753BF2005FFE99 /* GyanMatrix.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 85C8C41D1E753BF2005FFE99 /* GyanMatrix.xcdatamodeld */; };
@@ -28,6 +29,7 @@
 		8551B5681E7595E100D70631 /* PlayerListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerListViewCell.swift; sourceTree = "<group>"; };
 		8551B56E1E759F3100D70631 /* PlayerListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerListViewCell.xib; sourceTree = "<group>"; };
 		8551B5711E75BB1D00D70631 /* DBUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBUtil.swift; sourceTree = "<group>"; };
+		85C4E6611E773125007F1DDD /* list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = list.json; sourceTree = "<group>"; };
 		85C8C4131E753BF2005FFE99 /* GyanMatrix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GyanMatrix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85C8C4161E753BF2005FFE99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85C8C41B1E753BF2005FFE99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				85C8C4221E753BF2005FFE99 /* LaunchScreen.storyboard */,
 				85C8C4251E753BF2005FFE99 /* Info.plist */,
 				85C8C41D1E753BF2005FFE99 /* GyanMatrix.xcdatamodeld */,
+				85C4E6611E773125007F1DDD /* list.json */,
 			);
 			path = GyanMatrix;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 				85C8C4241E753BF2005FFE99 /* LaunchScreen.storyboard in Resources */,
 				85C8C4211E753BF2005FFE99 /* Assets.xcassets in Resources */,
 				85C8C41C1E753BF2005FFE99 /* Main.storyboard in Resources */,
+				85C4E6621E773125007F1DDD /* list.json in Resources */,
 				8551B56F1E759F3100D70631 /* PlayerListViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
